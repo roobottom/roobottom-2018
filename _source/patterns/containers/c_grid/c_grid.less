@@ -1,0 +1,52 @@
+.c_grid {
+
+  &--double {
+    @spacing: 20;
+    @supports (display:flex) {
+
+      >* {
+        margin-bottom: unit(@spacing/@base,rem);
+      }
+
+      #breakpoint > .med({
+
+        display: flex;
+        flex-wrap: wrap;
+
+        >* {
+          flex-basis: unit(100/3,%);
+          flex-grow: 2;
+        }
+
+        >*:nth-child(4n-2) {
+          margin-left: unit(@spacing/@base,rem);
+        }
+        >*:nth-child(4n) {
+          margin-left: unit(@spacing/@base,rem);
+        }
+
+      });
+
+      #breakpoint > .max({
+        >*:nth-child(4n-2) {
+          flex-basis: unit(100/2,%);
+
+        }
+        >*:nth-child(4n-1) {
+          flex-basis: unit(100/2,%);
+        }
+      })
+
+    }
+  }
+
+  &--single {
+    #layout > .med;
+  }
+
+  &--prose {
+    #layout > .prose;
+  }
+
+
+}

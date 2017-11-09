@@ -1,0 +1,163 @@
+#m_teaser {
+
+  .color(@bg) {
+    color: contrast(@bg,white,darken(@bg,45%),50%);
+  }
+
+  .negative(@c) {
+    color: contrast(white,@c_2,darken(@c_2,40%));
+  }
+
+}
+
+.m_teaser {
+
+  @spacing: unit(31/@base,rem);
+
+  display: flex;
+
+  align-items: flex-start;
+  position: relative;
+
+  flex-flow: column;
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  background-position: center top;
+  overflow: hidden;
+  text-decoration: none;
+
+  //colours
+  &--style-a,
+  &--style-a &__meta,
+  &--style-a &__month {
+    background-color: @c_2;
+  }
+  &--style-b,
+  &--style-b &__meta,
+  &--style-b &__month {
+    background-color: @c_3;
+  }
+  &--style-c,
+  &--style-c &__meta,
+  &--style-c &__month {
+    background-color: @c_4;
+  }
+  &--style-d,
+  &--style-d &__meta,
+  &--style-d &__month {
+    background-color: @c_5;
+  }
+
+  //text colour
+  &--style-a &__meta > p,
+  &--style-a &__titlelink,
+  &--style-a &__link,
+  &--style-a &__month {#m_teaser > .color(@c_2);}
+
+  &--style-b &__meta > p,
+  &--style-b &__titlelink,
+  &--style-b &__link,
+  &--style-b &__month {#m_teaser > .color(@c_3);}
+
+  &--style-c &__meta > p,
+  &--style-c &__titlelink,
+  &--style-c &__link,
+  &--style-c &__month {#m_teaser > .color(@c_4);}
+
+  &--style-d &__meta > p,
+  &--style-d &__titlelink,
+  &--style-d &__link,
+  &--style-d &__month {#m_teaser > .color(@c_5);}
+
+  &__date,
+  &__meta {
+    z-index: 2;
+  }
+
+  &__meta {
+    padding: 0 @spacing;
+    max-width: unit(540/@base,rem);
+    > p {
+      #m_prose > #default > .spacing();
+      #m_prose > #default > .size();
+    }
+  }
+
+  &__title {
+    #m_prose > #default > .spacing();
+    #m_prose > #heading > .base();
+    font-size: unit(27/@base,em);
+    line-height: @upper_lh/27;
+    #breakpoint > .med({
+      font-size: unit(37/@base,em);
+      line-height: @upper_lh*1.3/37;
+    });
+    #breakpoint > .max({
+      font-size: unit(57/@base,em);
+      line-height: @upper_lh*2/57;
+    });
+
+
+  }
+  &__titlelink {
+    text-decoration: none;
+  }
+
+  &__date {
+    display: flex;
+    flex-flow: column;
+    border: 2px solid black;
+    background-color: white;
+    position: relative;
+    min-width: unit(50/@base,rem);
+    #breakpoint > .med({
+      min-width: unit(80/@base,rem);
+    });
+    margin: @spacing @spacing 0 @spacing;
+  }
+  &--has-cover &__date {
+    margin-bottom: @spacing;
+  }
+
+  &__month {
+    border-bottom: 2px solid @c_bg;
+  }
+
+  &__day,
+  &__month,
+  &__year {
+    font-size: unit(14/@base,rem);
+    padding: unit(4/@base,rem) unit(14/@base,rem);
+    text-align: center;
+  }
+
+  &__year {
+    color: contrast(white,@c_bg,@c_text);
+  }
+
+  &__day {
+    color: contrast(white,@c_bg,@c_text);
+    font-family: 'Raleway',sans-serif;
+    font-weight: bold;
+    font-size: unit(18/@base,rem);
+    #breakpoint > .med({
+      font-size: unit(22/@base,rem);
+    });
+    padding-bottom: 0;
+    text-shadow: 1px 1px 0 white, 2px 2px 0 #ddd;
+  }
+
+
+  //prompt
+
+  &__link {
+    text-decoration: none;
+    border-bottom: 2px solid;
+    &:active {
+      outline: 1px solid;
+    }
+  }
+
+
+}

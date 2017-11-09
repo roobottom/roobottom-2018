@@ -1,0 +1,22 @@
+#breakpoint {
+
+  .min(@rule) {
+    @media screen and (min-width: (unit(@bp_min/@base,rem))) {
+      @rule();
+    }
+  }
+
+  .med(@rule) {
+    @media screen and (min-width: (unit(@bp_med/@base,rem))) {
+      @rule();
+    }
+  }
+
+
+  .max(@rule) {
+    @media screen and (min-width: (unit(@bp_max/@base,rem))) {
+      @rule();
+    }
+  }
+
+}

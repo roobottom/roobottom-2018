@@ -1,0 +1,24 @@
+.m_tag {
+  #m_prose > #default > .size(15;17;);
+  text-decoration: none;
+  background-color: @c_2;
+  display: flex;
+  color: white;
+  border-radius: unit(20/@base,rem);
+  justify-content: space-between;
+  overflow: hidden;
+
+  &__name,
+  &__count {
+    padding: unit(9/@base,rem) unit(22/@base,rem) ;
+    display: flex;
+    align-items: center;
+  }
+
+
+  &__count {
+    background-color: lighten(@c_2,20%);
+    color: darken(@c_2,18%);
+  }
+
+}

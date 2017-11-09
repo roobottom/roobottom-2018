@@ -1,0 +1,13 @@
+{% macro m_navigation(items,modifier) %}
+<nav class="m_navigation{% if modifier %} m_navigation--{{modifier}}{% endif %}">
+  <ul class="m_navigation__items">
+    {% for item in items -%}
+      <li class="m_navigation__item">
+        <a href="{{item.url}}" class="m_navigation__link{% if item.type == items.active %} m_navigation__link--current{% endif %}" title="{% if item.prompt %}{{item.prompt}}{% else %}{{item.title}}{% endif %}">
+          <span class="m_navigation__title">{{item.title}}</span>
+        </a>
+      </li>
+    {%- endfor %}
+  </ul>
+</nav>
+{% endmacro %}

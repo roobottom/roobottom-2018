@@ -1,0 +1,38 @@
+{% extends "layouts/default.html" %}
+
+{% macro call__prevNext() %}
+  {% for post in site.posts -%}
+    {% if post.id == page.id %}
+      {% if post.prev %}
+        {% set prev = {title: post.prev.title, url: '/' + post.prev.category + '/' + post.prev.id} %}
+      {% endif %}
+      {% if post.next %}
+        {% set next = {title: post.next.title, url: '/' + post.next.category + '/' + post.next.id} %}
+      {% endif %}
+      {{ m_prevNext(prev,next) }}
+    {% endif %}
+  {%- endfor %}
+{% endmacro %}
+
+{% set pageModifier -%}{% if page.modifier and page.modifier != '' %}prose-{{page.modifier}}{% else %}prose{% endif %}{%- endset %}
+{% set textModifier %}{% if page.modifier and page.modifier != '' %}bg-{{page.modifier}}{% else %}bg-light{% endif %}{% endset %}
+
+{% block content %}
+{% if page.fairground %}
+{{ m_fairground(page.fairground) }}
+{% endif %}
+{{ c_page([
+    m_pageTitle(page.title,date=page.date,humanDate=page.humanDate,modifier=textModifier),
+    c_grid([
+      m_prose(contents,textModifier)
+    ],'prose')
+  ],pageModifier)
+}}
+{{ c_aside([
+  c_grid([
+    m_cloud(page.tags,'Tagged:'),
+    call__prevNext()
+  ],'prose')
+])}}
+
+{% endblock %}

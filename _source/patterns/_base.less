@@ -1,0 +1,81 @@
+//settings
+@base: 16;
+
+//sizes
+@bp_min: 304;
+@bp_med: 704;
+@bp_prose: 694;
+@bp_max: 1204;
+
+@lower_lh: 26;
+@upper_lh: 31;
+
+@gutter: @upper_lh; //size of the site gutter.
+
+//shared styles
+@import '_shared/fonts';
+@import '_shared/utils';
+@import '_shared/layout';
+
+html, body {
+  overflow-x: hidden;
+  position: relative;//fix the overflow in iOS.
+  width: 100%;//fix the overflow in iOS.
+  //transition: all 1s;
+}
+
+//responsive images
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+//should these styles live somewhere else?
+.patternExample {
+  outline: 1px dashed @c_1;
+  padding: unit(@gutter/@base,rem);
+}
+
+body {
+  font-family: 'Source Sans', sans-serif;
+  background-color: @c_bg;
+  color: @c_text;
+  margin: 0;
+
+  &.page-type-home {
+    min-height: 100vh;
+    background-color: @c_home_1;
+    background-image:  radial-gradient(ellipse farthest-corner at 0% 100%, darken(@c_home_1,10%) 20%, darken(@c_home_2,0%) 100%);
+  }
+
+}
+
+//modules
+@import 'modules/m_pagination/m_pagination';
+@import 'modules/m_navigation/m_navigation';
+@import 'modules/m_figure/m_figure';
+@import 'modules/m_prose/m_prose';
+@import 'modules/m_pageTitle/m_pageTitle';
+@import 'modules/m_icon/m_icon';
+@import 'modules/m_siteHeader/m_siteHeader';
+@import 'modules/m_introduction/m_introduction';
+@import 'modules/m_teaser/m_teaser';
+@import 'modules/m_prevNext/m_prevNext';
+@import 'modules/m_tag/m_tag';
+@import 'modules/m_cloud/m_cloud';
+@import 'modules/m_masthead/m_masthead';
+@import 'modules/m_menuControl/m_menuControl';
+@import 'modules/m_fairground/m_fairground';
+@import 'modules/m_pointer/m_pointer';
+@import 'modules/m_switcher/m_switcher';
+@import 'modules/m_collection/m_collection';
+
+//containers
+@import 'containers/c_page/c_page';
+@import 'containers/c_header/c_header';
+@import 'containers/c_fullscreen/c_fullscreen';
+@import 'containers/c_grid/c_grid';
+@import 'containers/c_aside/c_aside';
+@import 'containers/c_inventory/c_inventory';
+@import 'containers/c_footer/c_footer';

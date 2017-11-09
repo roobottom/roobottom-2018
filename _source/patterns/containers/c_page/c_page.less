@@ -1,0 +1,16 @@
+.c_page {
+  &__content {
+    #layout > .max();
+    padding-top: unit(@gutter/@base,rem);
+    padding-bottom: unit(@gutter/@base,rem);
+  }
+
+  &--prose {
+    background-color: @c_prose_bg;
+  }
+
+  &--patterns &__content {
+    #layout > .edge-to-edge();
+  }
+
+}

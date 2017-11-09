@@ -1,0 +1,7 @@
+{% extends "layouts/default.html" %}
+{% block content %}
+{{c_page([
+  m_pageTitle(page.title),
+  m_cloud(site.tags)
+])}}
+{% endblock %}

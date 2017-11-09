@@ -1,0 +1,57 @@
+#m_introduction {
+
+  .text(@size; @lh:@size*1.5) {
+    font-size: unit(@size/2/@base,rem);
+    line-height: (@lh/2)/(@size/2);
+    #breakpoint > .min({
+      @vw_base: @bp_med/100;
+      font-size: unit(@size/@vw_base,vw);
+      line-height: unit(@lh/@vw_base,vw)
+    });
+    #breakpoint > .med({
+      font-size: unit(@size/@base,rem);
+      line-height: @lh/@size;
+    });
+  }
+
+}
+
+.m_introduction {
+
+  #layout > .med;
+
+  p {
+    #layout > .med;
+    #m_introduction > .text(31);
+    margin: unit(@lower_lh/@base,rem) 0;
+    #breakpoint > .med({
+      margin: unit(@upper_lh/@base,rem) 0;
+    });
+
+  }
+
+  p, a {
+    color: @c_text;
+    text-decoration: none;
+  }
+
+  a {
+    border-bottom: 2px solid fade(@c_text,15%);
+    &:hover {
+      background-color: fade(@c_text,5%);
+    }
+    &:active {
+      outline: 1px solid fade(@c_text,80%);
+    }
+  }
+
+  p:first-child {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    #m_introduction > .text(58,73);
+  }
+
+
+
+
+}

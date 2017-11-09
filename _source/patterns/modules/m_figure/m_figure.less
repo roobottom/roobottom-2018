@@ -1,0 +1,104 @@
+.m_figure {
+
+  #m_prose > #default > .spacing();
+  margin-left: unit(-1 * @gutter/@base,rem);
+  margin-right: unit(-1 * @gutter/@base,rem);
+  #breakpoint > .med({
+    margin: 0;//reset the browser
+  });
+
+  &__caption {
+    display: block;
+    color: @c_grey;
+    font-style: italic;
+    #m_prose > #default > .size(@max: 14; @min: 12;);
+    #m_prose > #default > .spacing(@top: .25; );
+
+    margin-left: unit(@gutter/@base,rem);
+    margin-right: unit(@gutter/@base,rem);
+    #breakpoint > .med({
+      margin-left: 0;
+      margin-right: 0;
+    });
+  }
+
+  &__image {
+    max-width: 100%;
+    display: block;
+  }
+
+  &__image + &__image {
+    margin-top: 1px;
+  }
+
+
+  //pull both
+  &--pull-both {
+    #breakpoint > .med({
+      margin-left: unit(-1 * @gutter/@base,rem);
+      margin-right: unit(-1 * @gutter/@base,rem);
+    });
+  }
+
+  &--pull-both &__caption {
+    #breakpoint > .med({
+      margin-left: unit(@gutter/@base,rem);
+      margin-right: unit(@gutter/@base,rem);
+    });
+  }
+
+
+
+  //pull right
+  &--pull-right,
+  &--always-pull-right {
+    margin-left: 0;
+    margin-right: 0;
+    @media screen and (min-width: 420px) {
+      margin: 0 unit(-1 * @gutter/@base,rem) unit(@gutter/@base,rem) unit(@gutter/@base,rem);
+      float: right;
+      max-width: 50%;
+    }
+    @media screen and (min-width: 690px) {
+      max-width: 34%;
+    }
+  }
+  &--always-pull-right &__caption,
+  &--pull-right &__caption {
+    margin-left: 0;
+  }
+  &--always-pull-right {
+    margin: 0 unit(-1 * @gutter/@base,rem) unit(@gutter/@base,rem) unit(@gutter/@base,rem);
+    float: right;
+    max-width: 50%;
+  }
+
+  //pull left
+  &--pull-left,
+  &--always-pull-left {
+    margin-left: 0;
+    margin-right: 0;
+    @media screen and (min-width: 420px) {
+      margin: 0  unit(@gutter/@base,rem) unit(@gutter/@base,rem) unit(-1 * @gutter/@base,rem);
+      float: right;
+      max-width: 50%;
+    }
+    @media screen and (min-width: 690px) {
+      max-width: 34%;
+    }
+  }
+  &--always-pull-left &__caption,
+  &--pull-left &__caption {
+    margin-right: 0;
+  }
+  &--always-pull-left {
+    margin: 0  unit(@gutter/@base,rem) unit(@gutter/@base,rem) unit(-1 * @gutter/@base,rem);
+    float: right;
+    max-width: 50%;
+  }
+
+
+
+
+
+}

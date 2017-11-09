@@ -1,0 +1,49 @@
+{
+  "name": "roobottom-2017",
+  "version": "1.0.0",
+  "description": "The personal website of Jon Roobottom",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jon Roobottom",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-data": "^1.2.1",
+    "gulp-front-matter": "^1.3.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-image-resize": "^0.10.0",
+    "gulp-less": "^3.3.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-marked": "^1.0.0",
+    "gulp-remarkable": "^1.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-svg-sprite": "^1.3.6",
+    "gulp-util": "^3.0.7",
+    "lodash": "^4.17.2",
+    "marked": "^0.3.6",
+    "moment": "^2.17.1",
+    "nunjucks": "^3.0.0",
+    "through2": "^2.0.1"
+  },
+  "dependencies": {
+    "concurrent-transform": "^1.0.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.0",
+    "html-minifier": "^3.2.3",
+    "jquery": "^3.1.1",
+    "less": "^2.7.2",
+    "markdown-toc": "^1.1.0",
+    "pluralize": "^4.0.0",
+    "remarkable": "^1.7.1",
+    "svg.js": "^2.4.0",
+    "webpack": "beta",
+    "webpack-stream": "^3.2.0"
+  }
+}

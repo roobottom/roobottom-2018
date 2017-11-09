@@ -1,0 +1,9 @@
+{% from "patterns/modules/m_icon/m_icon.html" import m_icon %}
+{% macro m_siteHeader(icon='menu',menuLink='#main-menu',menuData) %}
+  <div class="m_siteHeader">
+    <a href="/" class="m_siteHeader__titleLink" title="Go to the homepage">
+      <span class="m_siteHeader__intro">The personal website of</span>
+      <span class="m_siteHeader__name">Jon Roobottom</span>
+    </a>
+  </div>
+{% endmacro %}

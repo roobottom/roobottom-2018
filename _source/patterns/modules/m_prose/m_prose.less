@@ -1,0 +1,423 @@
+#m_prose {
+
+  #default {
+
+    .contrast(@bg: @c_bg; @color: @c_text;) {
+      color: contrast(@bg, @c_text, mix(@c_text,white,50%));
+    }
+
+    .spacing(@top: 1; @bottom: 1;) {
+      margin-top: unit(@lower_lh*@top/@base,rem);
+      margin-bottom: unit(@lower_lh*@bottom/@base,rem);
+      #breakpoint > .med({
+        margin-top: unit(@upper_lh*@top/@base,rem);
+        margin-bottom: unit(@upper_lh*@bottom/@base,rem);
+      });
+    }
+
+    .background(@color: @c_1; @foreground: @c_text;) {
+      background-color: contrast(@foreground, @color, darken(@color, 30%));
+    }
+
+    .size(@min: 19; @max: 21;) {
+
+      @lh_min: (@lower_lh - 17) + @min; //should be == @lower_lh at default size;
+      @lh_max: (@upper_lh - 19) + @max; //should be == @lh_max at default size;
+
+      font-size: unit(@min/@base,em);
+      line-height: @lh_min/@min;
+      #breakpoint > .min({
+        #m_prose > #fontlock > .line-height(@lh_min;@lh_max;);
+      });
+      #breakpoint > .med({
+        font-size: unit(@max/@base,em);
+        line-height: @lh_max/@max;
+      });
+    }
+
+  }
+
+  #fontlock {
+    .line-height( @lh-min:@lower_lh; @lh-max:@upper_lh; @width-min:@bp_min; @width-max:@bp_med) {
+      @internal_min: @lh-min / @base;
+      @internal_max: @lh-max / @base;
+      @minW: @width-min / @base;
+      @maxW: @width-max / @base;
+      line-height: ~"calc(@{internal_min}em + (@{internal_max} - @{internal_min}) * ((100vw - @{minW}em)/(@{maxW} - @{minW})))";
+    }
+    .font-size(@minSize; @maxSize; @width-min:@bp_min; @width-max:@bp_med;) {
+      @min: @minSize / @base;
+      @max: @maxSize / @base;
+      @minW: @width-min / @base;
+      @maxW: @width-max / @base;
+      font-size: ~"calc(@{min}em + (@{max} - @{min}) * ((100vw - @{minW}em)/(@{maxW} - @{minW})))";
+    }
+  }
+
+  #heading {
+    .base() {
+      font-weight: bold;
+      font-style: normal;
+      font-family: 'Raleway',sans-serif;
+    }
+
+
+    .h1() {
+      font-size: unit(40/@base,em);
+      line-height: @lower_lh*2/40;
+      #breakpoint > .med({
+        font-size: unit(81/@base,em);
+        line-height: @upper_lh*2.5/81;
+      });
+    }
+
+    .h2() {
+      font-size: unit(26/@base,em);
+      line-height: @lower_lh*1.5/26;
+      #breakpoint > .med({
+        font-size: unit(43/@base,em);
+        line-height: @upper_lh*2/43;
+      });
+      display: block;
+    }
+
+    .h3() {
+      font-size: unit(21/@base,em);
+      line-height: @lower_lh*1.5/21;
+      #breakpoint > .med({
+        font-size: unit(28/@base,em);
+        line-height: @upper_lh/28;
+      });
+      display: block;
+    }
+
+  }
+
+  #link {
+    .base() {
+      color: darken(@c_1, 10%);
+      text-decoration: none;
+      border-bottom: 1px solid fade(@c_1,20%);
+
+      &:hover {
+        background-color: fade(@c_1,10%);
+      }
+
+      &:active {
+        outline: 1px solid @c_1;
+        background-color: fade(@c_1,10%);
+      }
+
+    }
+  }
+
+}
+
+.m_prose {
+
+  //force typography
+  max-width: unit(@bp_prose/@base,rem);
+
+  //general styles
+  h1,h2,h3,h4,h5,h6,
+  p,blockquote,li {
+    color: @c_text;
+    #m_prose > #default > .spacing();
+  }
+
+  &--bg-light {
+    //general styles
+    h1,h2,h3,h4,h5,h6,
+    p,blockquote,li {
+      color: @c_text_dark;
+    }
+  }
+
+  //bold / italic
+  strong, b {
+    font-weight: bold;
+  }
+
+  em, i {
+    font-style: italic;
+  }
+
+  strong>em, em>strong,
+  strong>i, i>strong,
+  b>em, em>b,
+  b>i, i>b {
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  //headings
+  h1,h2,h3,h4,h5,h6 {
+    #m_prose > #heading > .base();
+  }
+  h1 {
+    #m_prose > #heading > .h1();
+  }
+  h2 {
+    #m_prose > #heading > .h2();
+    #m_prose > #default > .spacing(@bottom: 0; @top: 1.75);
+  }
+
+  h3 {
+    #m_prose > #heading > .h3();
+    #m_prose > #default > .spacing(@bottom: 0; @top: 1.75;);
+  }
+
+  //paragraphs
+  p {
+    #m_prose > #default > .size;
+  }
+
+  h2 + p,
+  h3 + p {
+    #m_prose > #default > .spacing(@top: 0.25;)
+  }
+
+
+  //links
+  a {
+    #m_prose > #link > .base();
+  }
+
+  //list
+  >ul,>ol {
+    #m_prose > #default > .spacing();
+    #m_prose > #default > .size;
+    #m_prose > #default > .contrast();
+    //list-style-position: inside;
+    margin-left: 1em;
+    padding: 0;
+    #breakpoint > .med({
+      margin-left: 0;
+    });
+  }
+
+  li {
+    #m_prose > #default > .spacing(@top:0; @bottom: .25);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  //special styles for sub lists
+  ul ul, ul ol, ol ol, ol ul {
+    padding: 0;
+    margin-left: 1em;
+  }
+  ul  {
+    list-style: disc;
+    ul {
+      list-style: circle;
+      ul {
+        list-style: square;
+      }
+    }
+  }
+  ol {
+    list-style: decimal;
+    ol {
+      list-style: lower-roman;
+      ol {
+        list-style: lower-latin;
+      }
+    }
+  }
+
+  //quotes
+  .bq(@bg; @c: @c_text;) {
+    background-color: @bg;
+    p, a {
+      color: contrast(@bg, darken(@bg,50%), white);
+    }
+    a {
+      border-color: darken(@bg,20%);
+      &:hover {
+        border-width: 4px;
+        background-color: transparent;
+      }
+      &:active {
+        outline-color: darken(@bg,20%);
+      }
+    }
+    &:before {
+      background-color: @bg;
+    }
+  }
+
+  blockquote {
+    font-style: italic;
+    position: relative;
+    display: block;
+    border-radius: 9px;
+    margin: 0;
+    padding: unit(@lower_lh/@base,rem);
+    #breakpoint > .med({
+      padding: unit(@upper_lh/@base,rem);
+    });
+
+    + blockquote {
+      #m_prose > #default > .spacing(@bottom: 0;);
+    }
+
+    >* {
+      margin: 0;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      transform: rotate(45deg);
+      background-color:@c_2;
+      width:20px;
+      height:20px;
+      position:absolute;
+      //z-index: -1;
+      top:50%;
+      margin-top: -10px;
+      left:-10px;
+      border-radius: 0 0 0 5px;
+    }
+
+    .bq(@c_2);
+
+    &:nth-of-type(4n-2) {
+      .bq(@c_3);
+
+      &:before {
+
+        left: auto;
+        right: -10px;
+        border-radius: 0 5px 0 0;
+      }
+    }
+    &:nth-of-type(4n-1) {
+      .bq(@c_4);
+    }
+    &:nth-of-type(4n) {
+      .bq(@c_5);
+      &:before {
+        left: auto;
+        right: -10px;
+        border-radius: 0 5px 0 0;
+      }
+    }
+
+  }
+
+  //code
+  code {
+    #m_prose > #default > .contrast();
+  }
+
+  //code -- blocks
+  pre {
+    #m_prose > #default > .spacing();
+    background-color: @c_lightgrey;
+    padding: unit(@lower_lh/@base,rem);
+    #breakpoint > .med({
+      padding: unit(@upper_lh/@base,rem);
+    });
+    overflow-y: auto;
+    margin-left: -6px;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      width: 6px;
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background-color: @c_2;
+    }
+
+  }
+  pre>code {
+    #m_prose > #default > .size();
+  }
+
+  //code -- inline
+  p>code,li>code,h2>code,h3>code {
+    background-color: @c_lightgrey;
+    border-radius: 2px;
+    padding: unit(2/@base,rem) unit(5/@base,rem);
+    #breakpoint > .med({
+      border-radius: 5px;
+      padding: unit(3/@base,rem) unit(6/@base,rem);
+    });
+  }
+
+
+  //tables
+  table {
+      border-collapse: collapse;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: @c_lightgrey;
+      #m_prose > #default > .contrast();
+      #m_prose > #default > .spacing();
+      #m_prose > #default > .size;
+      border-left: 6px solid @c_2;
+      margin-left: -6px;
+  }
+
+  td, th {
+      text-align: left;
+      border-bottom: 1px solid lighten(@c_grey,14%);
+      padding: .5em 1em;
+      vertical-align: top;
+  }
+
+  tr:last-child td {
+    border: none;
+  }
+
+  th {
+      font-weight: bold;
+      border-bottom: 2px solid lighten(@c_grey,14%);
+  }
+
+  //abbr
+  abbr {
+    border-bottom: 1px dotted @c_2;
+    cursor: help;
+    text-decoration: none;
+  }
+
+  //sub and sup
+  sub {
+    vertical-align: sub;
+    font-size: 70%;
+  }
+  sup {
+    vertical-align: super;
+    font-size: 70%;
+  }
+
+  //del
+  del {
+    text-decoration: line-through;
+  }
+
+  mark {
+    color: contrast(@c_3,white,darken(@c_3,50%));
+    background-color: @c_3;
+    padding: 0 .2em;
+  }
+
+  //hrs
+  hr {
+    border: 3px solid @c_1;
+    display: block;
+    width: 25%;
+    float: left;
+    #m_prose > #default > .spacing(@top: 0;);
+  }
+
+  hr+* {
+    clear: left;
+  }
+
+}

@@ -1,0 +1,40 @@
+.c_fullscreen {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: @c_bg;
+  overflow-y: auto;
+  z-index: 100;
+
+  display: none;
+  opacity: 1;
+
+
+  transition:
+        visibility 300ms cubic-bezier(1.000, 0.005, 0.845, 0.960),
+        opacity 300ms cubic-bezier(1.000, 0.005, 0.845, 0.960);
+
+  &:target {
+    display: block !important;
+  }
+
+  &--is-active {
+    display: block !important;
+  }
+
+  &--is-closed {
+    visibility:hidden;
+    opacity:0;
+  }
+
+  &--is-open {
+    visibility: visible;
+    opacity:1;
+  }
+
+
+
+}

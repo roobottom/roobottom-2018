@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="82px" viewBox="0 0 82 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>clipboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="clipboard">
+            <rect id="Rectangle-14" stroke="#000000" stroke-width="2" fill="#F4F4F4" x="5" y="13" width="72" height="66" rx="12"></rect>
+            <rect id="Rectangle-16" stroke="#000000" stroke-width="2" fill="#FFFFFF" x="13" y="21" width="56" height="50" rx="4"></rect>
+            <rect id="Rectangle-17" fill="#D6D6D6" x="21" y="52" width="40" height="4" rx="2"></rect>
+            <rect id="Rectangle-17" fill="#D6D6D6" x="21" y="59" width="30" height="4" rx="2"></rect>
+            <circle id="Oval-10" stroke="#CD4C5C" fill="#FF6175" cx="27" cy="41" r="6"></circle>
+            <circle id="Oval-10" stroke="#35859E" fill="#3F9BB8" cx="41" cy="41" r="6"></circle>
+            <circle id="Oval-10" stroke="#D19D08" fill="#FFCD72" cx="55" cy="41" r="6"></circle>
+            <path d="M31.8465871,10.1724138 L24.9081985,10.1724138 C22.7444705,10.1724138 21,11.7777601 21,13.7580552 L21,25.4143586 C21,27.3947706 22.7497601,29 24.9081985,29 L57.0918015,29 C59.2555295,29 61,27.3946537 61,25.4143586 L61,13.7580552 C61,11.7776432 59.2502399,10.1724138 57.0918015,10.1724138 L50.1534129,10.1724138 C49.4517801,6.10746758 45.6207841,3 41,3 C36.3792159,3 32.5482199,6.10746758 31.8465871,10.1724138 Z" id="Combined-Shape" stroke="#000000" stroke-width="2" fill="#EDECEC"></path>
+            <path d="M41,12 C42.1045695,12 43,11.1045695 43,10 C43,8.8954305 42.1045695,8 41,8 C39.8954305,8 39,8.8954305 39,10 C39,11.1045695 39.8954305,12 41,12 Z" id="Path" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

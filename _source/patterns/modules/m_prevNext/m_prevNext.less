@@ -1,0 +1,31 @@
+.m_prevNext {
+
+  display: flex;
+  justify-content: space-between;
+  #m_prose > #default > .spacing();
+
+  &__item--next {
+    margin-left: auto;
+    text-align: right;
+  }
+  &__item--prev {margin-right: unit(5/@base,rem);}
+
+
+  &__label,
+  &__link {
+    #m_prose > #default > .size();
+    margin: 0;
+  }
+
+  &__label {
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    color: @c_text;
+  }
+
+  &__link {
+    #m_prose > #link > .base();
+  }
+
+
+}

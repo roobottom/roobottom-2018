@@ -1,0 +1,22 @@
+.m_fairground {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  z-index: -1;
+  display: block !important;
+
+  &__triangle,
+  &__circle,
+  &__square {
+    stroke: @c_fairground;
+  }
+
+  &--nuclear {
+    position: fixed;
+    > path {
+      fill: @c_grey;
+      fill-opacity:.15;
+    }
+  }
+
+}

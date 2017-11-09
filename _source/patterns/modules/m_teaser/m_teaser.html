@@ -1,0 +1,18 @@
+{% from "patterns/modules/m_icon/m_icon.html" import m_icon %}
+{% macro m_teaser(title,url,date,day,month,year,intro,cover,modifier) %}
+<div class="m_teaser{% if modifier %} m_teaser--{{modifier}}{% endif %}">
+
+    {% if date %}
+    <time datetime="{{date}}" class="m_teaser__date">{% if day %}<span class="m_teaser__month">{{ month }}</span> <span class="m_teaser__day">{{ day }}</span> <span class="m_teaser__year">{{ year }}</span>{% else %}{{date}}{% endif %}</time>
+    {% endif %}
+
+    <div class="m_teaser__meta">
+      <h2 class="m_teaser__title"><a href="{{url}}" class="m_teaser__titlelink">{{title}}</a></h2>
+      {% if intro %}
+        {{ intro|safe }}
+      {% endif %}
+      <p><a href="{{url}}" class="m_teaser__link">Read this article</a></p>
+    </div>
+
+</div>
+{% endmacro %}
